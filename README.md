@@ -199,9 +199,7 @@ same folder as your input PDB.
 
 If you use LipiDeA in published work, please cite:
 
-> *Citation pending.*
-
-**DOI:** *TBD (Zenodo)*
+**DOI:** https://doi.org/10.5281/zenodo.23020934
 
 ## Authors
 
