@@ -195,12 +195,6 @@ same folder as your input PDB.
   Raise `cpu_workers` to speed up Steps 2, 5, 6, 7.2, and 7.3; it does not affect
   Step 3 and 4.
 
-## Citation
-
-If you use LipiDeA in published work, please cite:
-
-**DOI:** https://doi.org/10.5281/zenodo.23020934
-
 ## Authors
 
 Arvin Nazari and Yu-ming M. Huang
