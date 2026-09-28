@@ -1,0 +1,79 @@
+;
+; CVK's approximation of TOG for Martini3
+; inspired by DOI: 10.1002/aocs.12731
+;
+ 
+ 
+;;;;;; Martini lipid topology for glyceryl trioleate
+;
+; Description:
+;   A Martini model for glyceryl trioleate (TOG) lipid e.g. a glycerol with three C18:1 oleoyl tails.
+; Parameterization:
+;   Parametres provided by Timu Vuorela. See Vuorela et al. 2010.
+; Reference(s): 
+;   S.J. Marrink, A.H. de Vries, A.E. Mark. Coarse grained model for semi-quantitative lipid simulations. JPC-B, 108:750-760, 
+;   2004. doi:10.1021/jp036508g 
+;   S.J. Marrink, H.J. Risselada, S. Yefimov, D.P. Tieleman, A.H. de Vries. The MARTINI force field: coarse grained model for 
+;   biomolecular simulations. JPC-B, 111:7812-7824, 2007. doi:10.1021/jp071097f 
+;   T.A. Vuorela, A. Catte, P.S. Niemela, A. Hall, M.T. Hyvonen, S.J. Marrink, M. Karttunen, I. Vattulainen. Role of lipids 
+;   in spheroidal high density lipoproteins. PLoS Comp Biol, 6:e1000964, 2010. doi:10.1371/journal.pcbi.1000964
+;
+
+[ moleculetype ]
+; molname       nrexcl
+  TOG               1
+
+[ atoms ]
+;id type resnr residu atom cgnr   charge
+ 1   SC1   1     TOG     GLY    1      0
+ 2   N4a   1     TOG     ES1    2      0
+ 3   N4a   1     TOG     ES2    3      0
+ 4   N4a   1     TOG     ES3    4      0
+ 5   C1    1     TOG     C1A    5      0
+ 6   C4h   1     TOG     D2A    6      0
+ 7   C1    1     TOG     C3A    7      0
+ 8   C1    1     TOG     C4A    8      0
+ 9   C1    1     TOG     C1B    9      0
+ 10  C4h   1     TOG     D2B    10     0
+ 11  C1    1     TOG     C3B    11     0
+ 12  C1    1     TOG     C4B    12     0
+ 13  C1    1     TOG     C1C    13     0
+ 14  C4h   1     TOG     D2C    14     0
+ 15  C1    1     TOG     C3C    15     0
+ 16  C1    1     TOG     C4C    16     0
+
+[bonds]
+;  i     j   funct   length  force.c.
+   1     2    1       0.41     1250
+   1     3    1       0.41     1250
+   1     4    1       0.41     1250
+   2     5    1       0.47     1250
+   5     6    1       0.47     1250
+   6     7    1       0.47     1250
+   7     8    1       0.47     1250
+   3     9    1       0.47     1250
+   9     10   1       0.47     1250
+   10    11   1       0.47     1250
+   11    12   1       0.47     1250
+   4     13   1       0.47     1250
+   13    14   1       0.47     1250
+   14    15   1       0.47     1250
+   15    16   1       0.47     1250
+
+[angles]
+;  i     j    k     funct   angle  force.c.
+   2     1    4       2    60.000  25.0
+   2     1    3       2   130.000  25.0
+   3     1    4       2   130.000  25.0
+   1     2    5       2   180.000  25.0
+   2     5    6       2   180.000  25.0
+   5     6    7       2   120.000  45.0
+   6     7    8       2   180.000  25.0
+   1     3    9       2   180.000  25.0
+   3     9   10       2   180.000  25.0
+   9    10   11       2   120.000  45.0
+  10    11   12       2   180.000  25.0
+   1     4   13       2   180.000  25.0
+   4    13   14       2   180.000  25.0
+  13    14   15       2   120.000  45.0
+  14    15   16       2   180.000  25.0
