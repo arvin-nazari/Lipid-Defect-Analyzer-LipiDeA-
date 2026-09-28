@@ -1,6 +1,6 @@
 # LipiDeA v1.0
 
-#####
+```text
  _     _       _______      ___    __   _____ 
 | |   (_)     (_)  _  \    / _ \  /  | |  _  |
 | |    _ _ __  _| | | |___/ /_\ \ `| | | |/' |
@@ -9,7 +9,7 @@
 \_____/_| .__/|_|___/ \___\_| |_/ \___(_)___/ 
         | |                                   
         |_|                                    
-#####
+```
 
 LipiDeA (Lipid Defect Analyzer) is an open-source Python tool for identifying and quantifying lipid packing defects using trajectories from  molecular dynamics simulations. It uses surface-adaptive triangulated meshes to analyze membrane packing in curved, heterogeneous, bilayer, and monolayer systems without assuming a fixed membrane normal. LipiDeA quantifies defect size, coverage, packing defect constants, local curvature, and defect composition, including contributions from phospholipid tails and neutral lipids. The current implementation is designed for coarse-grained molecular dynamics trajectories.
 
