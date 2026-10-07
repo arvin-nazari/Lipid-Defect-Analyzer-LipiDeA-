@@ -1,0 +1,100 @@
+# ==================================================
+# input.in — LipiDeA full input options
+# ==================================================
+
+# ---------- Global ----------
+verbose: off                    # on:            display detailed output directly in the terminal.
+                                # off (default): display a progress bar for each step and write detailed
+                                #                output to results/run.log.
+
+cpu_workers: 8                  # Number of CPU cores used for parallel processing.
+                                # Default: 4.
+resume_from: 1                  # Step to start from: a <number>. Resumes from the selected step of the
+                                # code. 1, ..., 7.3.
+                                # Default: 1.
+
+# ---------- Step 1: atom CSV [required unless noted] ----------
+input: dag050.pdb               # Name for a multi-frame PDB file.
+neutral: TAG,TOG,DOG,DAG        # Residue names for neutral lipids.
+                                # Enter multiple residue names separated by commas.
+                                # Leave it empty means no neutral lipids selected.
+custom_ff :                     # Optional custom force field.
+                                # To use a custom force field, create a folder named "FF" and place the
+                                # *.itp files inside the folder.
+                                # Leave it empty to use the default MARTINI 3 force field.
+
+# ---------- Step 3: mesh generation ----------
+res_name: POPC,DOPE,SAPI        # Residues selected for LeafletFinder.
+atom_name: GL2                  # Bead name selected for LeafletFinder to create mesh.
+                                # default: GL2.
+triangle_size: 1.0              # Targeted mean triangle_area for mesh.
+                                # default: 1.0 Å^2.
+triangle_max_cv: 0.25           # Maximum triangle-area coefficient of variation.
+                                # default: 0.25.
+min_triangle_count: 2           # Minimum number of triangles in a cluster.
+                                # default: 2.
+
+# ---------- Step 4: defect finding ----------
+triangle_Kd_tree: 48            # Number of neighboring triangles for a target bead.
+                                # default: 48.
+
+# ---------- Step 7.1: fitting / analysis ----------
+output_name_prefix: DAG050      # Output file name for Steps 7.1, 7.2, 7.3.
+
+fitting: on                     # on (default): fit the packing-defect constant.
+                                # off:          skip.
+
+min_defect_size: 15             # [required if fitting: on] Minimum defect size for fitting.
+max_defect_size: 250            # [required if fitting: on] Maximum defect size for fitting.
+min_probability: 1e-4           # [required if fitting: on] Minimum probability cutoff, must be in
+                                #                           (0, 1].
+
+cluster_count: on               # on (default): count defect clusters per frame.
+                                # off:          skip.
+
+coverage: on                    # on (default): defect area as % of each frame's projected box area.
+                                # off:          skip.
+
+distribution: on                # on (default): mean cluster size per frame and pooled size histogram.
+                                # off:          skip.
+
+defect_type_coverage: on        # on (default): neutral-lipid vs. phospholipid-tail share of total
+                                #               defect area.
+                                # off:          skip.
+
+# ---------- Step 7.2: layer classification ----------
+layer_analysis: on              # on (default): tag each defect cluster monolayer or bilayer.
+                                # off:          skip Step 7.2 entirely.
+
+layer_thickness: auto           # auto (default): per-frame median apposition distance.
+                                # <number>:       fixed thickness in Å, e.g. 29.5.
+
+layer_thickness_tol: 8.0        # ± band (Å) around layer_thickness within which a triangle counts
+                                # as paired.
+                                # Default: 8.0.
+
+layer_max_pair_dist: 40.0       # Max distance (Å) searched on the opposite leaflet; beyond it a
+                                # triangle is unpaired.
+                                # Default: 40.0.
+
+layer_bilayer_frac: 0.5         # Cluster is bilayer if at least this fraction of its triangles are
+                                # paired. Range (0, 1].
+                                # Default: 0.5.
+
+layer_defect_mesh: on           # on (default): write defect PLY meshes.
+                                # off:          skip PLY writing (layers.csv is still written).
+
+# ---------- Step 7.3: curvature ----------
+curvature_analysis: on          # on (default): mean curvature calculation of the leaflet mesh.
+                                # off:          skip Step 7.3 entirely.
+
+curvature_full_mesh: on         # on (default): write full-leaflet curvature heatmap PLYs.
+                                # off:          skip the heatmap computation and writing.
+
+curvature_defect_mesh: on       # on (default): write defect-cluster curvature heatmap PLYs.
+                                # off:          skip PLY writing (CSV is still written).
+
+curvature_frames: 1990-2000     # [optional] Inclusive start-end frame range for PLY writing.
+                                #            Empty = all frames. CSV is always complete.
+
+
